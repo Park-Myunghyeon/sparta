@@ -1,0 +1,148 @@
+<!doctype html> //최신 html5
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+    <title>bath salt</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+    *{
+        font-family: 'Stylish', Sandoll ;
+      }
+    
+      
+    .image_ {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: center;
+/*      border: 2px solid black;
+      border-radius: 0.3rem;*/
+      max-width: auto;
+      padding: 0.3rem ;
+      margin: 0.3rem ;
+      display: block;
+      }
+
+/*      
+    {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      justify-content: center;
+      margin: auto ;
+      padding: auto;
+    }*/
+    .product_title{
+      margin: 0 0 0 10;
+      font-weight: 500;
+      padding: 20px 0 0 20px;
+      font-size: 35px;
+/*      border-top: 2px solid #222;
+*/    }
+    .product_order{
+      margin: 0 0 0 10;
+      font-weight: 500;
+      padding: 40px 0 0 20px;
+      font-size: 35px;
+    }
+    .product_price_content{
+      margin: 0 10px 0 10px;
+      padding: 0 0 0 10px;
+      font-size: 25px;
+    }
+    .product_content{
+      margin:10px 0 0 0px;
+      font-size: 20px;
+    }
+    form{
+
+      margin: 10px 0 0 0px;
+      padding: 0 0 0 10px;
+      font-size:20px;
+    }
+    </style>
+  </head>
+
+
+  <body>
+    <div class = 'image_'>
+      <img src="assignment1.png" alt="My Image" width ='500'>
+    </div>
+    <br/>
+      
+      <div class ='info'>
+
+        <div class = 'product_title'>
+          바스솔트 라벤더 650g
+        </div>
+        
+        <div class = 'product_price_content'>
+          <strong>￦10,900</strong>
+          <br/>
+          <div class = 'product_content'>
+            호주산 천일염과 함께 지친 하루를 위로하세요
+          </div>
+        </div>
+
+
+        <div class = 'product_order'>
+          <div class = 'order'>
+            <div style ='font-size:35px;font-weight:500;'>
+            주문하기
+          </div>
+
+        <form>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-5 col-form-label">주문자 성명</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputName" placeholder="성명">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleFormControlSelect1" class = 'col-sm-5 col-form-label'>수량</label>
+            <div class = 'col-sm-8'>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputAdress" class="col-sm-5 col-form-label">주소</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputAdress" placeholder="주소">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPhonenumber" class="col-sm-5 col-form-label">전화번호</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="inputPhonenumber" placeholder="전화번호">
+            </div>
+          </div>
+        
+
+          <button type="submit" class="btn btn-primary">주문하기</button>
+
+        </form>
+
+
+
+
+        </div>
+
+  </body>
+</html>
