@@ -1,0 +1,70 @@
+<html>
+	<head>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">		</script>
+    	
+    	<script type = 'text/javascript'>
+
+		function getData(){
+	        $.ajax({
+	          type: "GET",
+	          url: "http://openapi.seoul.go.kr:8088/6d4d776b466c656533356a4b4b5872/json/bikeList/1/99",
+	          data: {},
+	          success: function(response){ 
+	            // 비동기통신의 경우 통신이 정상적으로 이루어질때 
+	            let rentBikeStatus = response["rentBikeStatus"]
+	            let row = rentBikeStatus['row']
+
+	            for (var i=0; i< row.length; i++){
+	   	            let stationName = row[i]['stationName']
+		            let rackTotCnt = row[i]['rackTotCnt']
+		            let parkingBikeTotCnt = row[i]['parkingBikeTotCnt'];
+		            let html=`
+		            	<ul>
+		            		<li>${stationName}</li> 
+		            		<li>${rackTotCnt}</li>
+		            		<li>${parkingBikeTotCnt}</li>
+	            		</ul>`
+        			$('.result').append(html)         
+	          	}//``표시는 문자열로 만들면서 중간에 변수를 넣을 수 있음 ${}
+	        },
+	        error: function(error){ 
+    			$('.result').text('에러가 발생했습니다.')
+    		}
+	      })
+	  }
+
+	  	function getPhoto(){
+	        $.ajax({
+	          type: "GET",
+	          url: "https://api.thecatapi.com/v1/images/search",
+	          data: {},
+	          success: function(response){
+	          	console.log(response)
+	          	var url = response[0]['url']
+	          	console.log(url)
+	          	var html = '<img src = "'+ url + '"/>'
+	          	$('.result').append(html)
+
+		  }
+	  })
+    }
+
+  	</script>
+
+
+
+</head>
+
+
+
+<body>
+	<div class='result'>
+      <p> Hi</p>
+      <button onclick='getPhoto()' class="btn"> 사진 가져오기
+      </button>
+	</div>
+</body>
+
+</html>
