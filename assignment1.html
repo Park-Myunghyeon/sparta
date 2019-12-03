@@ -1,11 +1,12 @@
-<!doctype html> //최신 html5
+<!doctype html> 
+
 <html lang="ko">
   <head>
   <meta charset="utf-8">
     <title>bath salt</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- JS -->   
+    <!-- JQuery를 import 합니다 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -21,14 +22,14 @@
     .image_ {
       display: flex;
       flex-direction: column;
-      align-items: left;
+      align-items: center;
       justify-content: center;
 /*      border: 2px solid black;
       border-radius: 0.3rem;*/
-      max-width: auto;
+/*      max-width: auto;*/
       padding: 0.3rem ;
       margin: 0.3rem ;
-      display: block;
+      /*display: block;*/
       }
 
 /*      
@@ -47,28 +48,67 @@
       font-size: 35px;
 /*      border-top: 2px solid #222;
 */    }
-    .product_order{
-      margin: 0 0 0 10;
-      font-weight: 500;
-      padding: 40px 0 0 20px;
-      font-size: 35px;
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
     }
+
     .product_price_content{
       margin: 0 10px 0 10px;
       padding: 0 0 0 10px;
-      font-size: 25px;
+      font-size: 30px;
     }
     .product_content{
       margin:10px 0 0 0px;
-      font-size: 20px;
+      font-size: 25px;
     }
-    form{
-
-      margin: 10px 0 0 0px;
-      padding: 0 0 0 10px;
+    .product_order{
+      margin: 0 0 0 220px;
+      font-weight: 500;
+      padding: 40px 0 0 40px;
+      width:800px;
+    }
+    .row{
       font-size:20px;
     }
+
     </style>
+
+
+
+    <script type="text/javascript">
+      function order(){
+        let name = $('.name').val()
+        let address= $('.address').val()
+        let count = $('.count').val()
+        let phone = $('.phone').val()
+
+        $.ajax({
+        type: "GET",
+        url: "http://spartacodingclub.shop/order",
+        data: {get_name:name, get_address:address, get_count:count, get_phone:phone},
+        success: function(response){
+          if (response['result']=='success'){
+            alert('주문완료')         
+           }
+         }
+       })
+      }
+
+      function make_card(name,count,address,phone) {
+        let temp_html = '<tr>\
+            <td>'+name+'</td>\
+            <td>'+count+'</td>\
+            <td>'+address+'</td>\
+            <td>'+phone+'</td>\
+          </tr>';
+        $('.order').append(temp_html);
+      }
+</script>
+
   </head>
 
 
@@ -79,38 +119,38 @@
     <br/>
       
       <div class ='info'>
-
-        <div class = 'product_title'>
+  
+        <div class = 'product_title' align='center'>
           바스솔트 라벤더 650g
         </div>
         
-        <div class = 'product_price_content'>
+        <div class = 'product_price_content' align='center'>
           <strong>￦10,900</strong>
           <br/>
           <div class = 'product_content'>
             호주산 천일염과 함께 지친 하루를 위로하세요
           </div>
         </div>
-
-
+      </div>
+        <form>
         <div class = 'product_order'>
           <div class = 'order'>
             <div style ='font-size:35px;font-weight:500;'>
             주문하기
           </div>
 
-        <form>
+
           <div class="form-group row">
             <label for="inputName" class="col-sm-5 col-form-label">주문자 성명</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="inputName" placeholder="성명">
+              <input type="text" class="form-control name" id="inputName" placeholder="성명">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="exampleFormControlSelect1" class = 'col-sm-5 col-form-label'>수량</label>
             <div class = 'col-sm-8'>
-              <select class="form-control" id="exampleFormControlSelect1">
+              <select class="form-control count" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -123,22 +163,42 @@
           <div class="form-group row">
             <label for="inputAdress" class="col-sm-5 col-form-label">주소</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="inputAdress" placeholder="주소">
+              <input type="text" class="form-control address" id="inputAdress" placeholder="주소">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="inputPhonenumber" class="col-sm-5 col-form-label">전화번호</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="inputPhonenumber" placeholder="전화번호">
+              <input type="text" class="form-control phone" id="inputPhonenumber" placeholder="전화번호">
             </div>
           </div>
         
 
-          <button type="submit" class="btn btn-primary">주문하기</button>
-
+          <button onclick=order() type="submit" class="btn btn-primary">주문하기</button>
+        </div>
         </form>
-
+          <div class="orders">
+            <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">이름</th>
+                <th scope="col">수량</th>
+                <th scope="col">주소</th>
+                <th scope="col">전화번호</th>
+              </tr>
+            </thead>
+            <tbody id="orders-box">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          </div>
 
 
 
