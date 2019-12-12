@@ -40,82 +40,23 @@
   </style>
 
   <script type = 'text/javascript'>
-    $(document).ready(function(){
-      $('#cards-box').html('')
-      listing();
-      newMovie();
-    });
+    $('document').ready(function()){
+    })
+    function savePost(){
+    $ajax({
+      type: 'POST',
+      url : '/post',
+      data :{
+        url_give :'https://naver.com/',
+        comment_give : 'testttttt'
+      },
+      success: function(res){
+        console.log(res)
+      }
+      fail : function(res){
+        cons
 
-    function newMovie(){
-      $.ajax({
-        type: 'POST',
-        url: '/new',
-        data: {
-            rank_give: 51,
-            title_give: '장화홍련',
-            star_give: 8.7
-        },
-        success: function(response){
-            console.log(response)
-        }
-       })
-     }
 
-    function testPost() {
-      $.ajax({
-        type: 'POST',
-        url: '/test',
-        data: {
-            rank_give: 15,
-            star_give: 5.3},
-        success: function(response){
-            console.log(response)
-    }
-  })
-  }
-
-    function testGet() {
-      $.ajax({
-        type: 'GET',
-        url: '/test?rank_give=10',
-        success:
-            function(res){
-            console.log(res)
-            }
-          })
-        }
-
-    function listing() {
-      $.ajax({
-        type: "GET",
-        url: "http://spartacodingclub.shop/post",
-        data: {},
-        success: function(response){
-          let article = response['articles']
-          for (let i=0; i<article.length; i++){
-            make_card(
-              article[i]['comment'],
-              article[i]['desc'],
-              article[i]['image'],
-              article[i]['title'],
-              article[i]['url'])
-
-          }
-          console.log(response)
-        }
-      })
-    }
-    function make_card(comment, desc, image, title, url) {
-      let temp_html = '<div class="card">\
-        <img class="card-img-top" src="'+image+'" alt="Card image cap">\
-        <div class="card-body">\
-          <a href="'+url+'" target="_blank" class="card-title">'+title+'</a>\
-          <p class="card-text">'+desc+'</p>\
-          <p class="card-text comment">'+comment+'</p>\
-        </div>\
-      </div>';
-      $('#cards-box').append(temp_html);
-    }
   </script>
 
 
